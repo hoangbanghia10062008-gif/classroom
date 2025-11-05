@@ -30,12 +30,6 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
-		thumbnail: "from-seed-to-pumpkin.jpg",
-		URL: "https://www.youtube.com",
-		summary: "..."
-	},
-
-	{
 		thumbnail: "i-have-to-go.jpg",
 		URL: "https://www.youtube.com/embed/cdCCA1M_2z8",
 		summary: "Do you need to go?"
@@ -45,6 +39,12 @@ const bookData = [ // Array to hold book data
 		thumbnail: "i-love-my-fangs.jpg",
 		URL: "https://www.youtube.com/embed/p1_cOUAgxo0",
 		summary: "Fangs, teeth, the tooth fair, baby teeth, grown up, brushing, flossing."
+	},
+
+	{
+		thumbnail: lost-and-found.jpg,
+		URL: "https://www.youtube.com/embed/cRAAQ8EWzig",
+		summary: "..."
 	},
 
 	{
@@ -117,6 +117,12 @@ const bookData = [ // Array to hold book data
 		thumbnail: "we-dont-eat-our-classmates.jpg",
 		URL: "https://www.youtube.com/embed/th6exRnPixg",
 		summary: "A fun story that helps build empathy."
+	},
+
+	{
+		thumbnail: "whats-new-at-the-zoo.jpg",
+		URL: "https://www.youtube.com/embed/2J18N9jdR8c",
+		summary: "..."
 	},
 
 	{
