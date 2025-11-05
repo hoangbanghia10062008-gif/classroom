@@ -76,7 +76,7 @@
 	font-size: 40px;
 }
 
-#art::after {
+#arts::after {
 	content: "\1F3A8\1F58C";
 	color: black;
 	float: right;
