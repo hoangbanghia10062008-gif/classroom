@@ -15,10 +15,10 @@
 }
 
 .grid li a {
-	width: 100%;
-	height: 100%;
+	width: 250px;
+	height: 100px;
 	padding: 20px;
-	font-size: 30px;
+	font-size: 24px;
 
 	text-decoration: none;
 	list-style-type: none;

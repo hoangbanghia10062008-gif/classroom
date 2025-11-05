@@ -19,12 +19,14 @@
 	outline: none;
 	border-radius: 25px;
 
+	transition: border-radius 0.2s ease-out;
+
 	padding: 20px;
 	background-color: #eee;
 	color: #444;
 	cursor: pointer;
 	width: 300px;
-	height: fit-height;
+	height: fit-content;
 	font-size: 72px;
 }
 
@@ -36,15 +38,13 @@
 	box-sizing: border-box;
 	height: fit-content;
 	max-height: 0;
-	transition: max-height 0.2s ease-out;
+	
+	padding: 0 20px;
+	transition: max-height 0.2s ease-out 0.15s;
 	border-radius: 0 0 25px 25px;
 	width: 300px;
 	overflow: hidden;
 	background-color: #f1f1f1;
-}
-
-.content-active {
-	padding: 20px;
 }
 
 iframe {
