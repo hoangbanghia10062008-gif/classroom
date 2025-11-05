@@ -1,4 +1,4 @@
-.grid {
+.song-grid {
 	margin: 2%;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));

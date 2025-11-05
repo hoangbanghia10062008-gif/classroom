@@ -31,7 +31,7 @@ const songData = [ // Array to hold song data
 
 	{
 		title: "Drive the Fire Truck",
-		URL: "https://www.youtube.com/embed/aD3LZe7IoOo",
+		URL: "https://www.youtube.com/embed/XyUWz7kX_o0",
 		PDF: "song pdf/Drive the Fire Truck.pptx.pdf",
 	},
 
@@ -55,7 +55,7 @@ const songData = [ // Array to hold song data
 
 	{
 		title: "Pumpkin, Pumpkin",
-		URL: "https://www.youtube.com/embed/1Mph3hygIFU",
+		URL: "https://www.youtube.com/embed/trDl36m9pgA",
 		PDF: "song pdf/Pumpkin, Pumpkin.pptx.pdf",
 	},
 
@@ -67,35 +67,35 @@ const songData = [ // Array to hold song data
 
 	{
 		title: "You Are My Sunshine",
-		URL: "https://www.youtube.com/embed/4Oc6PTtcthA",
+		URL: "https://www.youtube.com/embed/dh7LJDHFaqA",
 		PDF: "song pdf/You Are My Sunshine.pptx.pdf",
 	},
 	
 ];
-		
-// global grid reference (set in loadBooks)
-let grid = null;
 
-function createBook(song) {
+function createSong(song) {
 	const content = `
 		<div class="video">
-			<iframe src="${song.URL}" title="YouTube video player"
+			<iframe src="${song.URL}"
+				title="YouTube video player"
+				loading="lazy"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				referrerpolicy="strict-origin-when-cross-origin"
+				allowfullscreen></iframe>
 			<a href="${song.PDF}" target="_blank">View PDF</a>
 			<p>${song.title}</p>
 		</div>
 	`;
 	return content;
-}
+};
 
 function loadSongs() {
-	const grid = document.querySelector('.grid');
+	const grid = document.querySelector('.song-grid');
 	if (!grid) return;
 
-	// Build all book HTML first
-	const songsHTML = songData.map(song => createBook(song)).join('');
+	// Build all song HTML first
+	const songsHTML = songData.map(song => createSong(song)).join('');
 	
 	// Insert all at once to minimize reflows
 	grid.innerHTML = songsHTML;
-}
+};

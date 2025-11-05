@@ -42,8 +42,8 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
-		thumbnail: lost-and-found.jpg,
-		URL: "https://www.youtube.com/embed/cRAAQ8EWzig",
+		thumbnail: "lost-and-found.jpg",
+		URL: "https://www.youtube.com/embed/kZD1RDY4Q9w",
 		summary: "..."
 	},
 
@@ -138,18 +138,13 @@ const bookData = [ // Array to hold book data
 	},
 ];
 
-// global grid reference (set in loadBooks)
-let grid = null;
-
 function createBook(book) {
     const content = `
         <div class="hover-container">
             <img src="../read/book-thumbnails/${book.thumbnail}" 
                  alt="Book Thumbnail" 
                  class="book-thumbnail"
-                 loading="lazy"
-                 width="200"
-                 height="300">
+                 loading="lazy">
             <div class="hidden-content">
                 <iframe src="${book.URL}" 
                         title="YouTube video player"
@@ -162,10 +157,10 @@ function createBook(book) {
         </div>
     `;
     return content;
-}
+};
 
 function loadBooks() {
-    const grid = document.querySelector('.grid');
+    const grid = document.querySelector('.book-grid');
     if (!grid) return;
 
     // Build all book HTML first
@@ -173,4 +168,4 @@ function loadBooks() {
     
     // Insert all at once to minimize reflows
     grid.innerHTML = booksHTML;
-}
+};
