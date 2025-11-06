@@ -1,24 +1,16 @@
-.song-grid {
-	margin: 2%;
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-	grid-auto-flow: row;
-	gap: 20px;
-  }
-  
-  .video {
+.video {
 	border: 2px solid #000;
 	background-color: aliceblue;
 	border-radius: 25px;
 	height: fit-content;
 	width: fit-content;
 	padding: 10px;
-  }
-  
-  iframe {
+}
+
+iframe {
 	border: none;
 	border-radius: 25px;
 	width: 100%;
 	height: 300px;
-  }
+}
   
