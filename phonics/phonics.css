@@ -1,11 +1,3 @@
-.grid-phonics {
-	display: grid;
-	margin-top: 20px;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-auto-flow: row;
-	gap: 20px;
-}
-
 .container {
 	display: flex;
 	width: fit-content;

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function() {
     const coll = document.getElementsByClassName("collapsible");
     
     for (let i = 0; i < coll.length; i++) {
@@ -100,8 +100,8 @@ const phonicData = [ // Array to hold book data
 function createPhonicEntry(phonic) {
     const content = `
         <div class="container">
-			<button type='button' class='collapsible'>${letter}</button>
-			<div class='content'>
+			<button type="button" class="collapsible">${letter}</button>
+			<div class="content">
 				<a href="${phonic.worksheet}" target="_blank">View Worksheet</a>
 				<img src="${phonic.mouth}" alt="Mouth Position for ${phonic.letter}">
 				<iframe src="${phonic.jollyPhonics}"
@@ -123,11 +123,11 @@ function createPhonicEntry(phonic) {
 };
 
 function loadPhonics() {
-    const grid = document.querySelector('.grid');
+    const grid = document.querySelector(".grid");
     if (!grid) return;
 
     // Build all book HTML first
-    const phonicHTML = phonicData.map(phonic => createBook(phonic)).join('');
+    const phonicHTML = phonicData.map(phonic => createPhonicEntry(phonic)).join("");
     
     // Insert all at once to minimize reflows
     grid.innerHTML = phonicHTML;

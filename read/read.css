@@ -1,12 +1,14 @@
 .hover-container {
 	box-sizing: border-box;
 	position: relative;
-	height: 40vh;
-	width: 15vw;
+	height: 550px;
+	width: 250px;
 
 	border: 4px solid #000;
 	border-radius: 25px;
 	cursor: pointer;
+
+	overflow: hidden;
 }
 
 .book-thumbnail {
@@ -17,6 +19,7 @@
 	height: 100%;
 	width: 100%;
 
+	overflow: hidden;
 	visibility: visible;
 	opacity: 1;
 	transition: visibility 0.2s, opacity 0.2s;
