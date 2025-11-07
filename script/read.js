@@ -147,7 +147,7 @@ const bookData = [ // Array to hold book data
 function createBookEntry(book) {
     const content = `
         <div class="hover-container">
-            <img src="/Classroom-Website/read/book-thumbnails/${book.cover}" 
+            <img src="/classroom/resources/book-thumbnails/${book.cover}" 
                  alt="Book cover" 
                  class="book-cover"
                  loading="lazy">
@@ -166,12 +166,13 @@ function createBookEntry(book) {
 };
 
 function loadBooks() {
-    const grid = document.querySelector('.grid');
+    const grid = document.querySelector(".grid");
 	if (!grid) return;
 
     // Build all book HTML first
-    const bookHTML = bookData.map(book => createBookEntry(book)).join('');
+    const bookHTML = bookData.map(book => createBookEntry(book)).join("");
     
     // Insert all at once to minimize reflows
     grid.innerHTML = bookHTML;
 };
+loadBooks();

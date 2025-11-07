@@ -132,3 +132,4 @@ function loadPhonics() {
     // Insert all at once to minimize reflows
     grid.innerHTML = phonicHTML;
 };
+loadPhonics();

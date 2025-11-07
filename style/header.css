@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "KGMissKindergarten";
-	src: url("fonts/KGMissKindergarten.ttf") format("truetype");
+	src: url("/classroom/resources/fonts/KGMissKindergarten.ttf") format("truetype");
 }
 
 body {

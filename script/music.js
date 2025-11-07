@@ -82,7 +82,7 @@ function createSongEntry(song) {
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin"
 				allowfullscreen></iframe>
-			<a href="${song.PDF}" target="_blank">View PDF</a>
+			<a href="/classroom/resources/songpdf/${song.PDF}" target="_blank">View PDF</a>
 			<p>${song.title}</p>
 		</div>
 	`;
@@ -90,11 +90,12 @@ function createSongEntry(song) {
 };
 
 function loadSongs() {
-	const grid = document.querySelector('.grid');
+	const grid = document.querySelector(".grid");
 	if (!grid) return;
 	// Build all song HTML first
-	const songHTML = songData.map(song => createSongEntry(song)).join('');
+	const songHTML = songData.map(song => createSongEntry(song)).join("");
 	
 	// Insert all at once to minimize reflows
 	grid.innerHTML = songHTML;
 };
+loadSongs()
