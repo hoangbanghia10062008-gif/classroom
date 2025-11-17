@@ -150,6 +150,12 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
+		cover: "zoom.jpg",
+		video: "https://www.youtube.com/embed/LBDOyWC--vI",
+		summary: "..."
+	},
+
+	{
 		cover: "zoomer.jpg",
 		video: "https://www.youtube.com/embed/Xa2d5UhQyyI",
 		summary: "Why won't Zoomer get ready?"

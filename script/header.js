@@ -120,12 +120,11 @@ function scrollFunction() {
 	const navBarButtons = document.querySelectorAll("#navbar li a")
 
 	if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-		navBarButtons.forEach(link => {
-			link.style.fontSize = "20px";
-		});
-	} else {
-		navBarButtons.forEach(link => {
-			link.style.fontSize = "32px";
-		});
+		navBarButtons.forEach(button => {
+            button.style.fontSize = "20px";
+		}); } else {
+		navBarButtons.forEach(button => {
+            button.style.fontSize = "32";
+		})}
 	}
 }
