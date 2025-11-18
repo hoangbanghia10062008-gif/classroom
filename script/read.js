@@ -24,6 +24,12 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
+		cover: "elmer-and-the-rainbow.jpg",
+		video: "https://www.youtube.com/watch?v=6FOlghZChuI",
+		summary: "..."
+	},
+
+	{
 		cover: "freight-train.jpg",
 		video: "https://www.youtube.com/embed/AnsL-bLN070",
 		summary: "A Donald Crews classic."
