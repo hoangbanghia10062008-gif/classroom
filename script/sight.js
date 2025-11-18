@@ -105,7 +105,7 @@ function createSightEntry(sight) {
 	return content;
 };
 
-function loadSight() {
+function loadSights() {
 	const grid = document.querySelector(".grid");
 	if (!grid) return;
 	// Build all song HTML first
@@ -136,5 +136,5 @@ function initializeVideoLazyLoad() {
 }
 
 // After the books are loaded into the page, set up the lazy-load listeners
-loadSight();
+loadSights();
 initializeVideoLazyLoad(); // <-- This line was changed (from just 'loadBooks();')
