@@ -1,0 +1,51 @@
+.hover-container {
+	box-sizing: border-box;
+	position: relative;
+	height: 350px;
+	width: 250px;
+
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	
+	border-radius: 25px;
+	cursor: pointer;
+
+	overflow: hidden;
+}
+
+.action-image {
+	position: absolute;
+	box-sizing: border-box;
+
+	height: 105%;
+	width: 100%;
+
+	overflow: hidden;
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0.2s, opacity 0.2s;
+}
+
+.hover-container:hover .action-image {
+	opacity: 0.3;
+}
+
+.hidden-content {
+	position: absolute;
+	padding: 20px;
+
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0.2s, opacity 0.2s;
+}
+
+iframe {
+	border: none;
+	border-radius: 25px;
+	width: 100%;
+	height: 150px;
+}
+
+.hover-container:hover .hidden-content {
+	visibility: visible;
+	opacity: 1;
+}

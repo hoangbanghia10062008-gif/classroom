@@ -16,7 +16,7 @@ const bookData = [ // Array to hold book data
 		video: "https://www.youtube.com/embed/rB0Ff7_LWCI",
 		summary: "Students have been interested in insects during outdoor play."
 	},
-	
+
 	{
 		cover: "eat-pete.jpg",
 		video: "https://www.youtube.com/embed/1jSeC941f50",
@@ -169,7 +169,7 @@ const bookData = [ // Array to hold book data
 ];
 
 function createBookEntry(book) {
-    const content = `
+	const content = `
         <div class="hover-container">
             <img src="/classroom/resources/book-thumbnails/${book.cover}" 
                  alt="Book cover" 
@@ -186,38 +186,38 @@ function createBookEntry(book) {
             </div>
         </div>
     `;
-    return content;
+	return content;
 };
 
 function loadBooks() {
-    const grid = document.querySelector(".grid");
+	const grid = document.querySelector(".grid");
 	if (!grid) return;
 
-    // Build all book HTML first
-    const bookHTML = bookData.map(book => createBookEntry(book)).join("");
-    
-    // Insert all at once to minimize reflows
-    grid.innerHTML = bookHTML;
+	// Build all book HTML first
+	const bookHTML = bookData.map(book => createBookEntry(book)).join("");
+
+	// Insert all at once to minimize reflows
+	grid.innerHTML = bookHTML;
 };
 
 
 // Lazy-loading videos
 
 function initializeVideoLazyLoad() {
-    const bookContainers = document.querySelectorAll(".hover-container");
+	const bookContainers = document.querySelectorAll(".hover-container");
 
-    bookContainers.forEach(container => {
-        // We'll use 'mouseenter' (hover) to load the video
-        container.addEventListener('mouseenter', () => {
-            const iframe = container.querySelector('iframe');
-            
-            // Check if the 'data-src' exists and if the 'src' is still empty
-            if (iframe && iframe.getAttribute('data-src') && iframe.src.includes('about:blank')) {
-                const videoUrl = iframe.getAttribute('data-src');
-                iframe.src = videoUrl; // This is what loads the video!
-            }
-        }, { once: true }); // 'once: true' ensures this only runs one time per book
-    });
+	bookContainers.forEach(container => {
+		// We'll use 'mouseenter' (hover) to load the video
+		container.addEventListener('mouseenter', () => {
+			const iframe = container.querySelector('iframe');
+
+			// Check if the 'data-src' exists and if the 'src' is still empty
+			if (iframe && iframe.getAttribute('data-src') && iframe.src.includes('about:blank')) {
+				const videoUrl = iframe.getAttribute('data-src');
+				iframe.src = videoUrl; // This is what loads the video!
+			}
+		}, { once: true }); // 'once: true' ensures this only runs one time per book
+	});
 }
 
 // After the books are loaded into the page, set up the lazy-load listeners
