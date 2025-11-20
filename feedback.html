@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Feedback Hub</title>
+	<link rel="stylesheet" href="/classroom/style/header.css">
+	<link rel="stylesheet" href="/classroom/style/feedback.css">
+</head>
+
+<body>
+	<!--Template-->
+	<div id="loader-placeholder"><!--Loader--></div>
+
+	<div id="navbar-placeholder"><!--Navigation Bar--></div>
+
+	<div id="header-placeholder" data-header-file="header-feedback.html"><!--Header--></div>
+	<!--End Template-->
+
+	<!--Feedback Input-->
+	<div class="container">
+		<h4>We welcome any feedback!</h4>
+		<p><i>(All of your feedback will be annonymous)</i></p>
+		<div class="feedback-form">
+			<form id="feedbackForm">
+				<label>Please rate your experience for each of these categories out of 5</label>
+				<label for="interface">Interface</label>
+				<div class="rating">
+					<input type="radio" id="star5" name="rating" value="5" required>
+					<label for="star5" title="Excellent">5</label>
+
+					<input type="radio" id="star4" name="rating" value="4">
+					<label for="star4" title="Good">4</label>
+
+					<input type="radio" id="star3" name="rating" value="3">
+					<label for="star3" title="Average">3</label>
+
+					<input type="radio" id="star2" name="rating" value="2">
+					<label for="star2" title="Poor">2</label>
+
+					<input type="radio" id="star1" name="rating" value="1">
+					<label for="star1" title="Terrible">1</label>
+				</div>
+
+				<label for="accessibility">Accessibility</label>
+				<div class="rating">
+					<input type="radio" id="star5" name="rating" value="5" required>
+					<label for="star5" title="Excellent">5</label>
+
+					<input type="radio" id="star4" name="rating" value="4">
+					<label for="star4" title="Good">4</label>
+
+					<input type="radio" id="star3" name="rating" value="3">
+					<label for="star3" title="Average">3</label>
+
+					<input type="radio" id="star2" name="rating" value="2">
+					<label for="star2" title="Poor">2</label>
+
+					<input type="radio" id="star1" name="rating" value="1">
+					<label for="star1" title="Terrible">1</label>
+				</div>
+
+				<label for="visual">Visual</label>
+				<div class="rating">
+					<input type="radio" id="star5" name="rating" value="5" required>
+					<label for="star5" title="Excellent">5</label>
+
+					<input type="radio" id="star4" name="rating" value="4">
+					<label for="star4" title="Good">4</label>
+
+					<input type="radio" id="star3" name="rating" value="3">
+					<label for="star3" title="Average">3</label>
+
+					<input type="radio" id="star2" name="rating" value="2">
+					<label for="star2" title="Poor">2</label>
+
+					<input type="radio" id="star1" name="rating" value="1">
+					<label for="star1" title="Terrible">1</label>
+				</div>
+
+				<div class="form-group">
+					<label for="comments">Additional Feedback: </label>
+					<textarea id="comments" name="comments" row="5"></textarea>
+				</div>
+
+				<button type="button" class="btn-submit">Submit Feedback</button>
+
+			</form>
+		</div>
+
+		<div id="confirmationMessage" class="confirmation-message hidden">
+			<h2>Thank You For Your Feedback!</h2>
+			<p>We appreciate your time and will use your feedback to improve our services.</p>
+			<p>Your response will not be shown to anyone else besides the developers.</p>
+		</div>
+	</div>
+
+
+	<script src="/classroom/script/header.js"></script>
+	<script src="/classroom/script/feedback.js"></script>
+
+</body>
+
+</html>
