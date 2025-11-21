@@ -54,6 +54,12 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
+		cover: "not-a-box.jpg",
+		video: "https://www.youtube.com/embed/svlNiELjDao",
+		summary: "..."
+	},
+
+	{
 		cover: "peanut-butter-and-cupcake.jpg",
 		video: "https://www.youtube.com/embed/XmPx1mg6z9s",
 		summary: "Who will be friends with peanut butter?"

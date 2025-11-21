@@ -88,10 +88,6 @@ function hideLoader() {
 	});
 }
 
-
-// --- Execution ---
-
-// 1. Setup the 10-second GUARANTEE (Safety Timeout)
 // If the page hasn't finished loading in 10 seconds, this will hide the loader.
 const timeoutId = setTimeout(hideLoader, 10000);
 
@@ -103,9 +99,6 @@ window.addEventListener('load', () => {
 	// ...and we STOP the 10-second timer from running.
 	clearTimeout(timeoutId);
 });
-
-
-// --- Run the functions ---
 
 // 1. Load the main layout (loader, navbar) immediately
 loadLayout();
