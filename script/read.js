@@ -25,7 +25,13 @@ const bookData = [ // Array to hold book data
 
 	{
 		cover: "elmer-and-the-rainbow.jpg",
-		video: "https://www.youtube.com/watch?v=6FOlghZChuI",
+		video: "https://www.youtube.com/embed/6FOlghZChuI",
+		summary: "..."
+	},
+
+	{
+		cover: "fire-chief-fran.jpg",
+		video: "https://www.youtube.com/embed/2nKsMzgBYFM",
 		summary: "..."
 	},
 
@@ -111,6 +117,12 @@ const bookData = [ // Array to hold book data
 		cover: "the-dark.jpg",
 		video: "https://www.youtube.com/embed/5YVoBXn9uz8",
 		summary: "A story about overcoming fear of the dark."
+	},
+
+	{
+		cover: "the-fire-station.jpg",
+		video: "https://www.youtube.com/embed/yuljTY5TxE0",
+		summary: "..."
 	},
 
 	{

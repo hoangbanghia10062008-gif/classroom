@@ -78,10 +78,10 @@ function createSongEntry(song) {
 		<div class="container">
 			<iframe src="${song.video}"
 				title="YouTube video player"
-				loading="lazy"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen></iframe>
+				allowfullscreen>
+			</iframe>
 			<a href="/classroom/resources/songpdf/${song.PDF}" target="_blank">View PDF</a>
 			<p>${song.title}</p>
 		</div>

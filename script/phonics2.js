@@ -4,7 +4,7 @@ const phonicData = [
 		letter: "B",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/8sQvep8_m_Y",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/F7WyPqms5x0",
 	},
 
@@ -12,7 +12,7 @@ const phonicData = [
 		letter: "C",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/CAqOwKUEN3o",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/LnDxp5QNxmA",
 	},
 
@@ -20,7 +20,7 @@ const phonicData = [
 		letter: "D",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/lyX1CgNfiLI",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/qdJwtaaTfb4&list=RDqdJwtaaTfb4",
 	},
 
@@ -28,7 +28,7 @@ const phonicData = [
 		letter: "F",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/QqFTv9PZyk4",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/CaywS_FK4wE",
 	},
 
@@ -44,7 +44,7 @@ const phonicData = [
 		letter: "H",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/9rHzSVQWGEI",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/ndf_-FJsPVk",
 	},
 
@@ -60,7 +60,7 @@ const phonicData = [
 		letter: "M",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/4UxWFlGuaWo",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/McACiO5dwGM",
 	},
 
@@ -68,7 +68,7 @@ const phonicData = [
 		letter: "S",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/ema1Gz3jpVI",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/McACiO5dwGM",
 	},
 
@@ -76,60 +76,73 @@ const phonicData = [
 		letter: "T",
 		mouth: "",
 		worksheet: "",
-		jollyPhonics: "https://www.youtube.com/embed/gB3AX5Ryujk",
+		jollyPhonics: "",
 		vocabSong: "https://www.youtube.com/embed/4PhbUhrI4KE",
 	},
 ];
 
-function createPhonicButton(phonic) {
+function createPhonicButton(phonic) { // Generates template for each phonic button
 	return `<button type="button" class="btn-phonic">${phonic.letter}</button>`
 };
 
-function createPhonicContent(phonic) {
+function createPhonicContent(phonic) { // Generates template for each overlay content
 	const content = `
+		<button type="button" class="btn-exit">Exit</button>
 		<a href="${phonic.worksheet}" target="_blank">View Worksheet</a>
-		<img src=/classroom/resources/phonics-mouth"${phonic.mouth}" alt="Mouth Position for ${phonic.letter}">
-		<iframe
-			class="lazy-video"
-			src="about:blank" 
-			data-src="${phonic.jollyPhonics}"
-			title="YouTube video player"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			referrerpolicy="strict-origin-when-cross-origin" 
-			allowfullscreen>
+		<iframe src="${phonic.mouth}"
+				title="YouTube video player"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" 
+				allowfullscreen>
 		</iframe>
-		<iframe
-			class="lazy-video"
-			src="about:blank" 
-			data-src="${phonic.vocabSong}"
-			title="YouTube video player"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-write; gyroscope; picture-in-picture; web-share"
-			referrerpolicy="strict-origin-when-cross-origin" 
-			allowfullscreen>
+		<iframe src="${phonic.jollyPhonics}"
+				title="YouTube video player"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" 
+				allowfullscreen>
+		</iframe>
+		<iframe src="${phonic.vocabSong}"
+				title="YouTube video player"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-write; gyroscope; picture-in-picture; web-share"
+				referrerpolicy="strict-origin-when-cross-origin" 
+				allowfullscreen>	
 		</iframe>
 	`;
 	return content
-}
+};
 
-// Load Buttons
-function loadButtons() {
+function loadButtons() { // Load Buttons for each Phonic
 	const grid = document.querySelector(".grid");
 	if (!grid) return;
 
 	const phonicButtonHTML = phonicData.map(phonic => createPhonicButton(phonic)).join("");
 	grid.innerHTML = phonicButtonHTML;
 };
+loadButtons();
 
-// Run functions
-loadButtons()
+let btnPhonic = document.getElementsByClassName("btn-phonic");
 
-let btnPhonic = document.getElementsByClassName("btn-phonic")
-let overlay = document.querySelector("overlay")
+let overlay = document.querySelector(".overlay");
 
 for (let i = 0; i < btnPhonic.length; i++) {
 	btnPhonic[i].addEventListener("click", function () {
-		let container = overlay.firstElementChild;
-		container.innerHTML = createPhonicContent(phonicData[i]);
-		overlay.classList.toggle("overlay-visible");
+
+		overlay.innerHTML = createPhonicContent(phonicData[i]);
+		
+		let btnExit = document.querySelector(".btn-exit");
+		let content = overlay.children;
+
+		for (const ele of content) {
+			ele.style.visibility = "visible"; // Expose each children of content
+		};
+
+		overlay.style.maxHeight = "100%"; // Expands overlay to height of screen
+
+		btnExit.addEventListener("click", function() {
+			overlay.style.maxHeight = null; // Close overlay
+			for (const ele of content) { // Hide each children of content
+				ele.style.visibility = "hidden";
+			};
+		});
 	});
-}
+};
