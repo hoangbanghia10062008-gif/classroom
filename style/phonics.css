@@ -2,21 +2,11 @@
 	box-sizing: border-box;
 }
 
-.container {
-	display: flex;
-	width: fit-content;
-	height: fit-content;
-	flex-direction: column;
-	align-items: center;
-}
-
-.collapsible {
+.btn-phonic {
 	border: none;
 	outline: none;
 	border-radius: 25px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-	transition: border-radius 0.2s ease-out;
 
 	padding: 20px;
 	background-image: linear-gradient(to bottom, #50808E, #8EBCBE);
@@ -27,43 +17,96 @@
 	font-size: 72px;
 }
 
-.collapsible-active, .collapsible:hover {
-	border-radius: 25px 25px 0 0;
-	background-image: linear-gradient(to bottom, #ff7e5f, #feb47b);
-	color: #000;
-	
+.btn-exit {
+	position: fixed;
+	border: none;
+	outline: none;
+	border-radius: 25px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-	border-bottom: none;
+
+	top: 20px;
+	left: 20px;
+
+	padding: 20px;
+	background-image: linear-gradient(to bottom, #50808E, #8EBCBE);
+	color: #fff;
+	cursor: pointer;
+	width: 100px;
+	height: fit-content;
+	font-size: 36px;
+
+	float: left;
 }
 
-.content {
+.btn-exit:hover {
+	background-image: linear-gradient(to bottom, #cc0b0b, #e66464);
+}
+
+.overlay {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	width: 100%;
+	height: 100%;
+	background-color: aliceblue;
+	padding: 0 50px;
+
 	visibility: hidden;
-	box-sizing: border-box;
-	height: fit-content;
 	max-height: 0;
-	
-	padding: 20px;
+	transition: max-height 0.2s ease-out;
+}
 
-	transition: max-height 0.2s ease-out 0.15s;
-	border-radius: 0 0 25px 25px;
-	width: 250px;
-	overflow: hidden;
-	background-image: linear-gradient(to bottom, #feb47b, #ff7e5f);
+.p-text {
+	width: 40vw;
+	margin-left: 100px;
+	margin-right: 50px;
+}
 
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-	border-top: none;
+.video-container {
+	position: block;
+	padding-left: 50px;
+
+	border-left: 2px solid black;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 100px 300px 300px;
+	grid-template-areas: 
+		"header header"
+		"video1 video2"
+		"video3 video3";
+	gap: 50px 100px;
+}
+
+.video-container > :nth-child(1) {
+	justify-self: center;
+	grid-area: header;
+}
+
+.video-container > :nth-child(2) {
+	grid-area: video1;
+}
+
+.video-container > :nth-child(3) {
+	grid-area: video2;
+}
+
+.video-container > :nth-child(4) {
+	justify-self: center;
+	grid-area: video3;
+}
+
+.pdf-preview {
+	width: 800px;
+	height: 700px;
 }
 
 iframe {
 	border: none;
 	border-radius: 25px;
-	width: 100%;
-	height: 150px;
-  }
-
-.big-image {
-	display: block;
-	margin: 20px auto;
-	width: 50%;
-	height: 100%;
+	width: 350px;
+	height: 250px;
 }
