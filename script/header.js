@@ -1,3 +1,15 @@
+// NAVBAR SEARCH
+function initializeSearchBar() {
+    let SearchBar = document.getElementById('search-bar');
+    console.log(SearchBar); // Will now log the element
+
+    // Your existing event listener
+    SearchBar.addEventListener("click", function () {
+        console.log("clicked");
+        SearchBar.value = "working";
+    });
+};
+
 // Fetches and injects an HTML component
 function loadComponent(url, placeholderId) {
 	return fetch(url)
@@ -31,6 +43,8 @@ async function loadLayout() {
 		loadComponent("/classroom/template/loader.html", "loader-placeholder"),
 		loadComponent("/classroom/template/navbar.html", "navbar-placeholder")
 	]);
+
+	initializeSearchBar()
 }
 
 // Function to load page-specific components

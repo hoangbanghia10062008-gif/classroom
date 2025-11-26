@@ -10,20 +10,42 @@ body {
 	padding-top: 60px;
 }
 
-/* Loading Screen */
+/* TEXT */
+h1 {
+	font-size: 72px;
+	color: #000;
+}
+
+h4 {
+	font-size: 32px;
+	color: #000;
+}
+
+p {
+	font-size: 22px;
+	color: #000000;
+}
+
+input {
+	font-family: KGMissKindergarten, sans-serif;
+	font-size: 22px;
+	color: rgba(0, 0, 0)
+}
+/* END TEXT */
+
+/* LOAD */
 #loader {
-	position: fixed; /* Sits on top of all content */
+	position: fixed;
 	z-index: 9999;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #fff; /* Full-page white background */
+	background-color: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	
-	/* For the fade-out */
 	transition: opacity 0.5s, visibility 0.5s;
 }
 
@@ -49,8 +71,9 @@ body {
 	opacity: 0;
 	visibility: hidden;
 }
+/* END LOAD */
 
-/* Navigation bar styles */
+/* NAV */
 #navBar {
 	display: flex;
 	position: fixed;
@@ -76,13 +99,6 @@ body {
 	list-style-type: none;
 	overflow: hidden;
 }
-/* 
-.logo {
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	float: left;
-} */
 
 #navBar li a {
 	display: block;
@@ -135,6 +151,12 @@ body {
 	font-size: 40px;
 }
 
+#search {
+	justify-self: right;
+}
+/* END NAV */
+
+/* HEADER */
 .header {
 	box-sizing: border-box;
 	height: fit-content;
@@ -148,26 +170,9 @@ body {
 	text-align: center;
 	justify-content: center;
 }
+/* END HEADER */
 
-/* Header text styles */
-h1 {
-	font-size: 72px;
-	color: #000;
-}
-
-
-h4 {
-	font-size: 32px;
-	color: #000;
-}
-
-p {
-	font-size: 22px;
-	color: #000000;
-}
-
-
-/* Grid layout for content sections */
+/* GRID */
 .grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -177,8 +182,9 @@ p {
 	justify-items: center;
 	align-items: center;
 }
+/* END GRID */
 
-/* Button grid layout */
+/* BUTTON GRID */
 .button-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -216,3 +222,4 @@ p {
 	background-image: linear-gradient(to bottom, #ff7e5f, #feb47b);
 	color: #000;
 }
+/* END BUTTON GRID */
