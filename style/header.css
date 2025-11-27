@@ -103,6 +103,9 @@ input {
 #navBar li a {
 	display: block;
 	position: relative;
+
+	margin-left: 100px;
+
 	padding: 20px;
 	height: fit-content;
 	width: fit-content;
@@ -151,8 +154,38 @@ input {
 	font-size: 40px;
 }
 
-#search {
-	justify-self: right;
+.search {
+	display: flex;
+	width: max-content;
+
+	--padding: 14px;
+	border-radius: 28px;
+
+	padding: var(--padding);
+
+	background-color: aliceblue;
+
+	align-items: center;
+
+	transition: box-shadow 0.25s;
+}
+
+.search:focus-within {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+}
+
+.search-input {
+	margin-left: var(--padding);
+
+	outline: none;
+	border: none;
+	background: transparent;
+
+	flex: 1;
+}
+
+.search-input::placeholder, search-icon {
+	color: 0 0 2px rgba(0, 0, 0, 0.15);
 }
 /* END NAV */
 

@@ -1,12 +1,11 @@
 // NAVBAR SEARCH
 function initializeSearchBar() {
-    let SearchBar = document.getElementById('search-bar');
-    console.log(SearchBar); // Will now log the element
-
-    // Your existing event listener
-    SearchBar.addEventListener("click", function () {
-        console.log("clicked");
-        SearchBar.value = "working";
+    let searchInput = document.querySelector(".search-input");
+    searchInput.addEventListener("keydown", function (event) {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			console.log(searchInput.value)
+		};
     });
 };
 
