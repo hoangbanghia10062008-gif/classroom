@@ -100,6 +100,31 @@ input {
 	overflow: hidden;
 }
 
+.collapsible-nav {
+	cursor: pointer;
+}
+
+.head-nav::after {
+	content: "\25BC";
+}
+
+.head-nav-active::after {
+	content: "\25B2";
+}
+
+.hidden-nav-links {
+	position: fixed;
+	max-height: 0;
+	height: fit-content;
+	width: inherit;
+
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+
+	background-image: linear-gradient(to bottom, #8EBCBE, #50808E);
+	border-radius: 0 0 25px 25px;
+}
+
 #navBar li a {
 	display: block;
 	position: relative;
@@ -187,6 +212,31 @@ input {
 .search-input::placeholder, search-icon {
 	color: 0 0 2px rgba(0, 0, 0, 0.15);
 }
+
+.search-results {
+	visibility: hidden;
+
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	margin-top: 10px;
+
+	gap: 10px;
+	padding: 10px;
+
+	list-style-type: none;
+
+	background: orange;
+	border: 2px solid black;
+	width: 300px;
+	height: fit-content;
+
+	align-content: center;
+}
+
+.search-results > * {
+	border-bottom: 2px solid #50808E;
+}
 /* END NAV */
 
 /* HEADER */
@@ -208,7 +258,7 @@ input {
 /* GRID */
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	grid-auto-flow: row;
 	gap: 50px;
 	padding: 50px;
@@ -220,7 +270,7 @@ input {
 /* BUTTON GRID */
 .button-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	grid-auto-flow: row;
 	padding: auto;
 	justify-items: center;

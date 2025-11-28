@@ -135,36 +135,36 @@ function loadButtons() { // Load Buttons for each Phonic
 
 	const phonicButtonHTML = phonicData.map(phonic => createPhonicButton(phonic)).join("");
 	grid.innerHTML = phonicButtonHTML;
+
+	let btnPhonic = document.getElementsByClassName("btn-phonic");
+
+	let overlay = document.querySelector(".overlay");
+
+	for (let i = 0; i < btnPhonic.length; i++) {
+		btnPhonic[i].addEventListener("click", function () {
+
+			overlay.innerHTML = createPhonicContent(phonicData[i]);
+			
+			let btnExit = document.querySelector(".btn-exit");
+			let content = overlay.children;
+
+			for (const ele of content) {
+				ele.style.visibility = "visible"; // Expose each children of content
+			};
+
+			overlay.style.visibility = "visible";
+			overlay.style.maxHeight = "100%"; // Expands overlay to height of screen
+
+			btnExit.addEventListener("click", function() {
+				setTimeout(() => {
+					overlay.style.visibility = "hidden";
+				}, 200);
+				overlay.style.maxHeight = null; // Close overlay
+				for (const ele of content) { // Hide each children of content
+					ele.style.visibility = "hidden";
+				};
+			});
+		});
+	};
 };
 loadButtons();
-
-let btnPhonic = document.getElementsByClassName("btn-phonic");
-
-let overlay = document.querySelector(".overlay");
-
-for (let i = 0; i < btnPhonic.length; i++) {
-	btnPhonic[i].addEventListener("click", function () {
-
-		overlay.innerHTML = createPhonicContent(phonicData[i]);
-		
-		let btnExit = document.querySelector(".btn-exit");
-		let content = overlay.children;
-
-		for (const ele of content) {
-			ele.style.visibility = "visible"; // Expose each children of content
-		};
-
-		overlay.style.visibility = "visible";
-		overlay.style.maxHeight = "100%"; // Expands overlay to height of screen
-
-		btnExit.addEventListener("click", function() {
-			setTimeout(() => {
-				overlay.style.visibility = "hidden";
-			}, 200);
-			overlay.style.maxHeight = null; // Close overlay
-			for (const ele of content) { // Hide each children of content
-				ele.style.visibility = "hidden";
-			};
-		});
-	});
-};

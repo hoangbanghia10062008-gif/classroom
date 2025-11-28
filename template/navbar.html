@@ -3,16 +3,31 @@
 <ul id="navBar">
 	<li><a href="/classroom/index.html">Home</a></li>
 	<li><a href="/classroom/news.html">News</a></li>
-	<li><a href="/classroom/phonics.html">Phonics</a></li>
-	<li><a href="/classroom/read.html">Read Alouds</a></li>
 	<li><a href="/classroom/math.html">Math</a></li>
 	<li><a href="/classroom/music.html">Music</a></li>
 	<li><a href="/classroom/arts.html">Arts</a></li>
-	<li><a href="/classroom/sight.html">Sight Words</a></li>
-	<form>
-		<div class="search">
-			<span class="material-symbols-outlined">search</span>
-			<input type="text" class="search-input" name="search-bar" placeholder="Search">
+
+	<div class="collapsible-nav">
+		<li><a class="head-nav">Language</a></li>
+		<div class="hidden-nav-links">
+			<li><a href="/classroom/phonics.html">Phonics</a></li>
+			<li><a href="/classroom/read.html">Read Alouds</a></li>
+			<li><a href="/classroom/action.html">Action Words</a></li>
 		</div>
-	</form>
+	</div>
+
+	<div class="search-box">
+		<form>
+			<div class="search">
+				<span class="material-symbols-outlined">search</span>
+				<input type="text" class="search-input" name="search-bar" placeholder="Search">
+			</div>
+		</form>
+		<ul class="search-results">
+			<li>Search 1</li>
+			<li>Search 2</li>
+			<li>Search 3</li>
+			<!--matching results-->
+		</ul>
+	</div>
 </ul>
