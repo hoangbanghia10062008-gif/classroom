@@ -50,6 +50,31 @@ function loadComponent(url, placeholderId) {
 };
 
 
+findHeadNavButton = function() {
+	let navColl = document.getElementsByClassName('nav-head');
+
+	headNav[i].classList.toggle("head-nav-active");
+	let content = this.children[1];
+
+	if (content.style.maxHeight) {
+		content.style.maxHeight = null;
+	} else {
+		content.style.maxHeight = content.scrollHeight + "px";
+	};
+};
+
+
+initializeHeadNavButton = function () {
+	let  = document.getElementsByClassName("collapsible-nav");
+	let headNav = document.getElementsByClassName("head-nav");
+
+	for (let i = 0; i < coll.length; i++) {
+	coll[i].addEventListener("click", function() {
+		findHeadNavButton();
+	});
+	}	
+};
+
 // Load all common layout elements
 async function loadLayout() {
 	// We use Promise.all to run fetches in parallel
@@ -59,61 +84,8 @@ async function loadLayout() {
 		loadComponent("/classroom/template/navbar.html", "navbar-placeholder")
 	]);
 
-	initializeSearchBar()
-
-	let coll = document.getElementsByClassName("collapsible-nav");
-	let headNav = document.getElementsByClassName("head-nav");
-
-	for (let i = 0; i < coll.length; i++) {
-	coll[i].addEventListener("click", function() {
-		
-		headNav[i].classList.toggle("head-nav-active");
-		let content = this.children[1];
-
-		if (content.style.maxHeight) {
-		// --- WE ARE CLOSING THE PANEL ---
-		
-		content.style.maxHeight = null;
-
-		// Disconnect and remove the observer to save performance
-		if (content.resizeObserver) {
-			content.resizeObserver.disconnect();
-			content.resizeObserver = null; // Clean up the property
-		}
-
-		} else {
-		// --- WE ARE OPENING THE PANEL ---
-		
-		// Set the initial height
-		content.style.maxHeight = content.scrollHeight + "px";
-
-		// 1. Create a new ResizeObserver
-		const resizeObserver = new ResizeObserver(entries => {
-			// This callback fires when the content's size changes
-
-			// We use requestAnimationFrame to prevent a common "loop limit" error
-			window.requestAnimationFrame(() => {
-			if (!Array.isArray(entries) || !entries.length) {
-				return;
-			}
-			
-			// Get the element we are observing
-			const observedContent = entries[0].target;
-			
-			// Re-calculate and set the maxHeight to the *new* scrollHeight
-			observedContent.style.maxHeight = observedContent.scrollHeight + "px";
-			});
-		});
-
-		// 2. Start observing the content element
-		resizeObserver.observe(content);
-
-		// 3. Store the observer *on the content element itself*
-		//    so we can access it later to disconnect it on close.
-		content.resizeObserver = resizeObserver;
-		}
-	});
-	}
+	initializeSearchBar();
+	initializeHeadNavButton();
 };
 
 // Function to load page-specific components

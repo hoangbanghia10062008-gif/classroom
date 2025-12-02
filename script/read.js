@@ -60,6 +60,12 @@ const bookData = [ // Array to hold book data
 	},
 
 	{
+		cover: "miss-tizzy.jpg",
+		video: "https://www.youtube.com/embed/FiGANn5tb0c",
+		summary: "..."
+	},
+
+	{
 		cover: "not-a-box.jpg",
 		video: "https://www.youtube.com/embed/svlNiELjDao",
 		summary: "..."
