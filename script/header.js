@@ -154,3 +154,26 @@ loadLayout();
 // 2. Load page-specific parts (header, footer, etc.)
 // We run this after the main layout to ensure placeholders are ready
 loadPageComponents();
+
+// highlight current page in navbar
+
+$(function(){
+    var currentPath = window.location.pathname; // Get the full URL path, e.g., "/classroom/index.html"
+
+    // Handle the case where the current page might be the root of the site (e.g., just "/")
+    if (currentPath.endsWith('/')) {
+        currentPath = currentPath + 'index.html'; // Assuming index.html is the default file
+    }
+
+    $('#navBar li a').each(function(){
+        var $href = $(this).attr('href');
+		console.log($href);
+        
+        // Check if the link's href is an exact match OR if the link is empty (optional safety)
+        if ( ($href == currentPath) || ($href == '') ) {
+            $(this).addClass('on');
+        } else {
+            $(this).removeClass('on');
+        }
+    });
+});
