@@ -104,15 +104,19 @@ input {
 	cursor: pointer;
 }
 
-.head-nav::after {
+.nav-head {
+	cursor: pointer;
+}
+
+.nav-head::after {
 	content: "\25BC";
 }
 
-.head-nav-active::after {
+.nav-head-active::after {
 	content: "\25B2";
 }
 
-.hidden-nav-links {
+.nav-hidden-links {
 	position: fixed;
 	max-height: 0;
 	height: fit-content;

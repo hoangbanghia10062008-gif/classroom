@@ -190,15 +190,16 @@ const bookData = [ // Array to hold book data
 		video: "https://www.youtube.com/embed/Xa2d5UhQyyI",
 		summary: "Why won't Zoomer get ready?"
 	},
-];
+]
 
-function createBookEntry(book) {
-	const content = `
+createBookEntry = function (book) { // template for book container
+	let content = `
         <div class="hover-container">
             <img src="/classroom/resources/book-thumbnails/${book.cover}" 
                  alt="Book cover" 
                  class="book-thumbnail"
                  loading="lazy">
+
             <div class="hidden-content">
                 <iframe data-src="${book.video}" 
                         src="about:blank"
@@ -210,24 +211,20 @@ function createBookEntry(book) {
             </div>
         </div>
     `;
-	return content;
-};
 
-function loadBooks() {
-	const grid = document.querySelector(".grid");
-	if (!grid) return;
+	return content
+}
 
-	// Build all book HTML first
+loadBooks = function () {
+	let grid = document.querySelector(".grid");
+	if (!grid) {return};
 	const bookHTML = bookData.map(book => createBookEntry(book)).join("");
-
-	// Insert all at once to minimize reflows
-	grid.innerHTML = bookHTML;
-};
+	grid.innerHTML = bookHTML
+}
 
 
 // Lazy-loading videos
-
-function initializeVideoLazyLoad() {
+initializeVideoLazyLoad = function () {
 	const bookContainers = document.querySelectorAll(".hover-container");
 
 	bookContainers.forEach(container => {
@@ -246,4 +243,4 @@ function initializeVideoLazyLoad() {
 
 // After the books are loaded into the page, set up the lazy-load listeners
 loadBooks();
-initializeVideoLazyLoad(); // <-- This line was changed (from just 'loadBooks();')
+initializeVideoLazyLoad();

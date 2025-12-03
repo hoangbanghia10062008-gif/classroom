@@ -1,5 +1,4 @@
-// Array to hold book data
-const phonicData = [
+const phonicData = [ // Array to hold book data
 	{
 		letter: "B",
 		mouth: "https://www.youtube.com/embed/OwmLcXxzyLY",
@@ -91,11 +90,19 @@ const phonicData = [
 	},
 ];
 
-function createPhonicButton(phonic) { // Generates template for each phonic button
-	return `<button type="button" class="btn-phonic"><i>${phonic.letter}${(phonic.letter).toLowerCase()}</i></button>`
+let btnPhonic = document.getElementsByClassName("btn-phonic");
+let overlay = document.querySelector(".overlay");
+
+createPhonicButton = function (phonic) { // Generates template for each phonic button
+	let button = `
+		<button type="button" class="btn-phonic">
+			${phonic.letter}${(phonic.letter).toLowerCase()}
+		</button>
+	`;
+	return button
 };
 
-function createPhonicContent(phonic) { // Generates template for each overlay content
+createPhonicContent = function (phonic) { // Generates template for each overlay content
 	const content = `
 		<button type="button" class="btn-exit">Exit</button>
 		<div class="p-text">
@@ -129,17 +136,7 @@ function createPhonicContent(phonic) { // Generates template for each overlay co
 	return content
 };
 
-function loadButtons() { // Load Buttons for each Phonic
-	const grid = document.querySelector(".grid");
-	if (!grid) return;
-
-	const phonicButtonHTML = phonicData.map(phonic => createPhonicButton(phonic)).join("");
-	grid.innerHTML = phonicButtonHTML;
-
-	let btnPhonic = document.getElementsByClassName("btn-phonic");
-
-	let overlay = document.querySelector(".overlay");
-
+addOverlay = function () { // create overlay for each inidividual character
 	for (let i = 0; i < btnPhonic.length; i++) {
 		btnPhonic[i].addEventListener("click", function () {
 
@@ -148,7 +145,7 @@ function loadButtons() { // Load Buttons for each Phonic
 			let btnExit = document.querySelector(".btn-exit");
 			let content = overlay.children;
 
-			for (const ele of content) {
+			for (ele of content) {
 				ele.style.visibility = "visible"; // Expose each children of content
 			};
 
@@ -167,4 +164,15 @@ function loadButtons() { // Load Buttons for each Phonic
 		});
 	};
 };
+
+loadButtons = function () { // Load Buttons for each Phonic
+	const grid = document.querySelector(".grid");
+	if (!grid) {return};
+
+	const phonicButtonHTML = phonicData.map(phonic => createPhonicButton(phonic)).join("");
+	grid.innerHTML = phonicButtonHTML;
+
+	addOverlay()
+};
+
 loadButtons();

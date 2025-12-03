@@ -49,31 +49,24 @@ function loadComponent(url, placeholderId) {
 		});
 };
 
+// Nav Bar Script
+let navColl = document.getElementsByClassName('nav-coll-container');
+let navHead = document.getElementsByClassName('nav-head');
+let navLinks = document.getElementsByClassName('nav-hidden-links')
 
 findHeadNavButton = function() {
-	let navColl = document.getElementsByClassName('nav-head');
-
-	headNav[i].classList.toggle("head-nav-active");
-	let content = this.children[1];
-
-	if (content.style.maxHeight) {
-		content.style.maxHeight = null;
-	} else {
-		content.style.maxHeight = content.scrollHeight + "px";
+	for (let i = 0; i < navColl.length; i++) {
+		navHead[i].addEventListener('click', function () {
+			let curNavLinks = navLinks[i];
+			navHead[i].classList.toggle("nav-head-active");
+			if (curNavLinks.style.maxHeight) {
+				curNavLinks.style.maxHeight = null;
+			} else {
+				curNavLinks.style.maxHeight = curNavLinks.scrollHeight + "px";
+			};
+		});
 	};
-};
-
-
-initializeHeadNavButton = function () {
-	let  = document.getElementsByClassName("collapsible-nav");
-	let headNav = document.getElementsByClassName("head-nav");
-
-	for (let i = 0; i < coll.length; i++) {
-	coll[i].addEventListener("click", function() {
-		findHeadNavButton();
-	});
-	}	
-};
+}
 
 // Load all common layout elements
 async function loadLayout() {
@@ -85,7 +78,7 @@ async function loadLayout() {
 	]);
 
 	initializeSearchBar();
-	initializeHeadNavButton();
+	findHeadNavButton();
 };
 
 // Function to load page-specific components
