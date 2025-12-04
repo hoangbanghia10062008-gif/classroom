@@ -1,5 +1,5 @@
-// NAVBAR SEARCH
-function initializeSearchBar() {
+// SEARCHBAR
+initializeSearchBar = function () {
     let searchInput = document.querySelector(".search-input");
 	let searchResults = document.querySelector(".search-results");
 
@@ -26,7 +26,7 @@ function initializeSearchBar() {
 };
 
 // Fetches and injects an HTML component
-function loadComponent(url, placeholderId) {
+loadComponent = function (url, placeholderId) {
 	return fetch(url)
 		.then(response => {
 			if (!response.ok) {
@@ -49,12 +49,12 @@ function loadComponent(url, placeholderId) {
 		});
 };
 
-// Nav Bar Script
+// NAVBAR
 let navColl = document.getElementsByClassName('nav-coll-container');
 let navHead = document.getElementsByClassName('nav-head');
 let navLinks = document.getElementsByClassName('nav-hidden-links')
 
-findHeadNavButton = function() {
+findHeadNavButton = function() { // find and initialize collapsible nav
 	for (let i = 0; i < navColl.length; i++) {
 		navHead[i].addEventListener('click', function () {
 			let curNavLinks = navLinks[i];
@@ -68,10 +68,43 @@ findHeadNavButton = function() {
 	};
 }
 
-// Load all common layout elements
-async function loadLayout() {
-	// We use Promise.all to run fetches in parallel
-	// This is much faster than loading them one by one.
+function initializeNavHighlight() { // New function for highlighting the current page
+    let currentPath = window.location.pathname; 
+
+    if (currentPath.endsWith('/')) {
+        currentPath = currentPath + 'index.html'; 
+    }
+
+    // Use document.querySelector to find the container
+    const navBar = document.getElementById('navBar');
+
+    if (!navBar) {
+        console.warn("Cannot initialize nav highlight: #navBar not found.");
+        return; // Exit if the element isn't there yet
+    }
+    
+    // Select links after confirming #navBar exists
+    const navLinks = navBar.querySelectorAll('li a'); 
+
+    navLinks.forEach(function(link) {
+        let linkHref = link.getAttribute('href');
+        
+        // This line caused an error previously, better to check for null
+        if (linkHref === null) {
+            linkHref = ''; 
+        }
+
+        // IMPORTANT: Check for 'active' class (Fix 2)
+        if (linkHref === currentPath || linkHref === '') { 
+            link.classList.add('active'); // Use 'active' here
+        } else {
+            link.classList.remove('active');
+        }
+    });
+}
+
+// LOAD PAGE
+loadLayout = async function () { // Load all common layout elements
 	await Promise.all([
 		loadComponent("/classroom/template/loader.html", "loader-placeholder"),
 		loadComponent("/classroom/template/navbar.html", "navbar-placeholder")
@@ -79,21 +112,15 @@ async function loadLayout() {
 
 	initializeSearchBar();
 	findHeadNavButton();
+	initializeNavHighlight();
 };
 
-// Function to load page-specific components
-async function loadPageComponents() {
-	// Find the header placeholder
-	const headerPlaceholder = document.getElementById("header-placeholder");
+loadPageComponents = async function () { // Function to load page-specific components
+	const headerPlaceholder = document.getElementById("header-placeholder"); // Find the header placeholder
 
-	// Check if the placeholder exists
-	if (headerPlaceholder) {
-		// Get the specific header file name from the 'data-header-file' attribute
-		const headerFile = headerPlaceholder.getAttribute("data-header-file");
-
-		// If the attribute exists, load that file
+	if (headerPlaceholder) { // Check if the placeholder exists
+		const headerFile = headerPlaceholder.getAttribute("data-header-file"); // Get the specific header file name from the 'data-header-file' attribute
 		if (headerFile) {
-			// Construct the full path
 			const headerPath = `/classroom/template/${headerFile}`;
 			await loadComponent(headerPath, "header-placeholder");
 		} else {
@@ -101,8 +128,7 @@ async function loadPageComponents() {
 		}
 	}
 
-	// You could add more page-specific parts here using the same pattern
-	// e.g., for a dynamic footer
+	// add more page-specific parts here using the same pattern
 }
 
 // --- CORE LOADER LOGIC ---
@@ -113,7 +139,7 @@ async function loadPageComponents() {
  * @param {string} selector - The CSS selector for the element (e.g., '#loader').
  * @param {function} callback - The function to run once the element is found.
  */
-function waitForElement(selector, callback) {
+waitForElement = function (selector, callback) {
 	const checkElement = () => {
 		const element = document.querySelector(selector);
 		if (element) {
@@ -127,53 +153,18 @@ function waitForElement(selector, callback) {
 	checkElement();
 }
 
-/** Hides the loader by adding the CSS class 'loader-hidden'. */
-function hideLoader() {
-	// Use the robust checker to ensure #loader is in the DOM
-	waitForElement('#loader', (loader) => {
-		// We add the class to make it fade out (assuming you have 'loader-hidden' CSS)
+hideLoader = function () { // hide loader using css
+	waitForElement('#loader', (loader) => { // Use the robust checker to ensure #loader is in the DOM
 		loader.classList.add('loader-hidden');
 	});
 }
-
-// If the page hasn't finished loading in 10 seconds, this will hide the loader.
-const timeoutId = setTimeout(hideLoader, 10000);
 
 // 2. Hide loader as soon as possible (on page load event)
 // 'load' fires after ALL resources (images, scripts, components) are loaded.
 window.addEventListener('load', () => {
 	// If the 'load' event fires, we hide the loader immediately...
 	hideLoader();
-	// ...and we STOP the 10-second timer from running.
-	clearTimeout(timeoutId);
 });
 
-// 1. Load the main layout (loader, navbar) immediately
 loadLayout();
-
-// 2. Load page-specific parts (header, footer, etc.)
-// We run this after the main layout to ensure placeholders are ready
 loadPageComponents();
-
-// highlight current page in navbar
-
-$(function(){
-    var currentPath = window.location.pathname; // Get the full URL path, e.g., "/classroom/index.html"
-
-    // Handle the case where the current page might be the root of the site (e.g., just "/")
-    if (currentPath.endsWith('/')) {
-        currentPath = currentPath + 'index.html'; // Assuming index.html is the default file
-    }
-
-    $('#navBar li a').each(function(){
-        var $href = $(this).attr('href');
-		console.log($href);
-        
-        // Check if the link's href is an exact match OR if the link is empty (optional safety)
-        if ( ($href == currentPath) || ($href == '') ) {
-            $(this).addClass('on');
-        } else {
-            $(this).removeClass('on');
-        }
-    });
-});
