@@ -68,7 +68,7 @@ findHeadNavButton = function() { // find and initialize collapsible nav
 	};
 }
 
-function initializeNavHighlight() { // New function for highlighting the current page
+initializeNavHighlight = function () { // New function for highlighting the current page
     let currentPath = window.location.pathname; 
 
     if (currentPath.endsWith('/')) {
@@ -95,11 +95,16 @@ function initializeNavHighlight() { // New function for highlighting the current
         }
 
         // IMPORTANT: Check for 'active' class (Fix 2)
-        if (linkHref === currentPath || linkHref === '') { 
-            link.classList.add('active'); // Use 'active' here
-        } else {
+        if (linkHref === currentPath) { 
+            link.classList.add('active'); // Use 'active' here'
+			console.log(link + 'yes')
+			if (link.parentNode.parentNode.getAttribute('href') === null) {
+				link.parentNode.parentNode.classList.add('active');
+			}
+		} else {
             link.classList.remove('active');
-        }
+			console.log(link + 'no')
+		}
     });
 }
 
