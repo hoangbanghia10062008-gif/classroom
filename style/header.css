@@ -140,12 +140,12 @@ input {
 }
 
 #navBar li a:hover, /* change text color */
-#navBar li a.active {
+#navBar li a:active {
 	color: #000;
 }
 
 #navBar li a:hover::before, /* makes background change color */
-#navBar li a.active::before {
+#navBar li a:active::before {
 	opacity: 1;
 	max-height: 100%;
 }
@@ -159,7 +159,8 @@ input {
 	content: " \25BC";
 }
 
-.nav-head-active::after {
+.nav-head-active::after,
+.nav-head:hover::after {
 	content: " \25B2";
 }
 

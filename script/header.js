@@ -88,23 +88,19 @@ initializeNavHighlight = function () { // New function for highlighting the curr
 
     navLinks.forEach(function(link) {
         let linkHref = link.getAttribute('href');
-        
-        // This line caused an error previously, better to check for null
-        if (linkHref === null) {
-            linkHref = ''; 
-        }
 
         // IMPORTANT: Check for 'active' class (Fix 2)
         if (linkHref === currentPath) { 
             link.classList.add('active'); // Use 'active' here'
-			console.log(link + 'yes')
-			if (link.parentNode.parentNode.getAttribute('href') === null) {
-				link.parentNode.parentNode.classList.add('active');
-			}
-		} else {
+			console.log(link + 'yes');
+			let navHead = link.parentNode.parentNode.previousElementSibling;
+			console.log(navHead);
+			console.log(link)
+			navHead.classList.add('active');
+		} else if (linkHref) {
             link.classList.remove('active');
-			console.log(link + 'no')
-		}
+			console.log(link + 'no');
+		};
     });
 }
 
