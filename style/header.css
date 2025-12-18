@@ -100,7 +100,7 @@ input {
 }
 
 /* NAV ELEMENTS */
-#navBar li a {
+#navBar li a.nav {
 	display: block;
 	position: relative;
 
@@ -121,7 +121,7 @@ input {
 	text-decoration: none;
 }
 
-#navBar li a::before {
+#navBar li a.nav::before {
 	position: absolute;
 	z-index: -1;
 	height: 100%;
@@ -139,27 +139,75 @@ input {
 	transition: 0.3s;
 }
 
-#navBar li a:hover, /* change text color */
-#navBar li a:active {
+#navBar li a.nav:hover, /* change text color */
+#navBar li a.nav.active {
 	color: #000;
 }
 
-#navBar li a:hover::before, /* makes background change color */
-#navBar li a:active::before {
+#navBar li a.nav:hover::before, /* makes background change color */
+#navBar li a.nav.active::before {
 	opacity: 1;
 	max-height: 100%;
 }
 
 /* COLLAPSIBLE NAV */
 .nav-head {
+	display: block;
+	position: relative;
+
 	cursor: pointer;
+
+	padding: 20px;
+	height: fit-content;
+	width: fit-content;
+
+	transition: 0.3s;
+
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+	margin: 10px 20px;
+
+	text-align: center;
+	justify-content: center;
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav-head::before {
+	position: absolute;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+	opacity: 0;
+	max-height: 0;
+	inset: 0;
+
+	content: "";
+	background-image: linear-gradient(to bottom, #ff7e5f, #feb47b);
+	transition: 0.3s;
 }
 
 .nav-head::after {
 	content: " \25BC";
 }
 
-.nav-head-active::after,
+.nav-head:hover,
+.nav-head.active {
+	color: black;
+}
+
+.nav-head:hover::before,
+.nav-head.active::before {
+	opacity: 1;
+	max-height: 100%;
+}
+
+.nav-head.active::after,
 .nav-head:hover::after {
 	content: " \25B2";
 }

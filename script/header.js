@@ -58,7 +58,7 @@ findHeadNavButton = function() { // find and initialize collapsible nav
 	for (let i = 0; i < navColl.length; i++) {
 		navHead[i].addEventListener('click', function () {
 			let curNavLinks = navLinks[i];
-			navHead[i].classList.toggle("nav-head-active");
+			navHead[i].classList.toggle("active");
 			if (curNavLinks.style.maxHeight) {
 				curNavLinks.style.maxHeight = null;
 			} else {
@@ -92,14 +92,8 @@ initializeNavHighlight = function () { // New function for highlighting the curr
         // IMPORTANT: Check for 'active' class (Fix 2)
         if (linkHref === currentPath) { 
             link.classList.add('active'); // Use 'active' here'
-			console.log(link + 'yes');
-			let navHead = link.parentNode.parentNode.previousElementSibling;
-			console.log(navHead);
-			console.log(link)
-			navHead.classList.add('active');
 		} else if (linkHref) {
             link.classList.remove('active');
-			console.log(link + 'no');
 		};
     });
 }
