@@ -148,16 +148,13 @@ waitForElement = function (selector, callback) {
 	checkElement();
 }
 
-hideLoader = function () { // hide loader using css
+function hideLoader() { // hide loader using css
 	waitForElement('#loader', (loader) => { // Use the robust checker to ensure #loader is in the DOM
 		loader.classList.add('loader-hidden');
 	});
 }
 
-// 2. Hide loader as soon as possible (on page load event)
-// 'load' fires after ALL resources (images, scripts, components) are loaded.
 window.addEventListener('load', () => {
-	// If the 'load' event fires, we hide the loader immediately...
 	hideLoader();
 });
 

@@ -1,3 +1,7 @@
+import {CreateHeader} from "./header-template.js";
+
+CreateHeader(); // send back header with title and subtitle
+
 const bookData = [ // Array to hold book data
 	{
 		cover: "bernice-gets-carried-away.jpg",
