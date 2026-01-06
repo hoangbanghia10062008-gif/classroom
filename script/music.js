@@ -73,29 +73,39 @@ const songData = [ // Array to hold song data
 	
 ];
 
-function createSongEntry(song) {
-	const content = `
-		<div class="container">
-			<iframe src="${song.video}"
-				title="YouTube video player"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				referrerpolicy="strict-origin-when-cross-origin"
-				allowfullscreen>
-			</iframe>
-			<a href="/classroom/resources/songpdf/${song.PDF}" target="_blank">View PDF</a>
-			<p>${song.title}</p>
-		</div>
-	`;
-	return content;
-};
 
-function loadSongs() {
-	const grid = document.querySelector(".grid");
-	if (!grid) return;
-	// Build all song HTML first
-	const songHTML = songData.map(song => createSongEntry(song)).join("");
-	
-	// Insert all at once to minimize reflows
-	grid.innerHTML = songHTML;
+import {CreateSong} from './header-template.js';
+
+function populateSongEntry() {
+	for (let i = 0; i < songData.length; ++i) {
+		CreateSong(songData[i].video, songData[i].PDF, songData[i].title);
+	}
 };
-loadSongs()
+populateSongEntry();
+
+// function createSongEntry(song) {
+// 	const content = `
+// 		<div class="container">
+// 			<iframe src="${song.video}"
+// 				title="YouTube video player"
+// 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+// 				referrerpolicy="strict-origin-when-cross-origin"
+// 				allowfullscreen>
+// 			</iframe>
+// 			<a href="/classroom/resources/songpdf/${song.PDF}" target="_blank">View PDF</a>
+// 			<p>${song.title}</p>
+// 		</div>
+// 	`;
+// 	return content;
+// };
+
+// function loadSongs() {
+// 	const grid = document.querySelector(".grid");
+// 	if (!grid) return;
+// 	// Build all song HTML first
+// 	const songHTML = songData.map(song => createSongEntry(song)).join("");
+	
+// 	// Insert all at once to minimize reflows
+// 	grid.innerHTML = songHTML;
+// };
+// loadSongs();

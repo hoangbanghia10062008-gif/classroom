@@ -1,6 +1,6 @@
 import {CreateHeader} from "./header-template.js";
 
-CreateHeader(); // send back header with title and subtitle
+CreateHeader("Read Alouds", "Find out what your kids have been reading in class"); // send back header with title and subtitle
 
 const bookData = [ // Array to hold book data
 	{
@@ -196,7 +196,7 @@ const bookData = [ // Array to hold book data
 	},
 ]
 
-createBookEntry = function (book) { // template for book container
+function createBookEntry(book) { // template for book container
 	let content = `
         <div class="hover-container">
             <img src="/classroom/resources/book-thumbnails/${book.cover}" 
@@ -219,7 +219,7 @@ createBookEntry = function (book) { // template for book container
 	return content
 }
 
-loadBooks = function () {
+function loadBooks() {
 	let grid = document.querySelector(".grid");
 	if (!grid) {return};
 	const bookHTML = bookData.map(book => createBookEntry(book)).join("");
@@ -228,23 +228,19 @@ loadBooks = function () {
 
 
 // Lazy-loading videos
-initializeVideoLazyLoad = function () {
+function initializeVideoLazyLoad() {
 	const bookContainers = document.querySelectorAll(".hover-container");
 
 	bookContainers.forEach(container => {
-		// We'll use 'mouseenter' (hover) to load the video
-		container.addEventListener('mouseenter', () => {
-			const iframe = container.querySelector('iframe');
-
-			// Check if the 'data-src' exists and if the 'src' is still empty
-			if (iframe && iframe.getAttribute('data-src') && iframe.src.includes('about:blank')) {
+		container.addEventListener('mouseenter', () => { // hover
+			const iframe = container.querySelector('iframe'); // find video
+			if (iframe && iframe.getAttribute('data-src') && iframe.src.includes('about:blank')) { // check to see if data-src exists and src is empty
 				const videoUrl = iframe.getAttribute('data-src');
-				iframe.src = videoUrl; // This is what loads the video!
+				iframe.src = videoUrl; // sets video src to data-src to load video
 			}
 		}, { once: true }); // 'once: true' ensures this only runs one time per book
 	});
 }
 
-// After the books are loaded into the page, set up the lazy-load listeners
 loadBooks();
 initializeVideoLazyLoad();

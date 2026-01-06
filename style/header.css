@@ -4,6 +4,15 @@ body {
 	padding-top: 60px;
 }
 
+.loading {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99999;
+}
+
 /* TEXT */
 h1 {
 	font-size: 72px;
@@ -80,9 +89,16 @@ input {
 	width: 100%;
 	height: fit-content;
 
+	overflow-x: scroll;
+	overflow-y: hidden;
+
+	-webkit-overflow-scrolling: touch;
+
+	-ms-overflow-style: none; /* for IE and Edge */
+	scrollbar-width: none; 
+
 	top: 0;
 	margin: 0;
-	padding: 0;
 
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
@@ -96,7 +112,8 @@ input {
 	justify-content: center;
 
 	list-style-type: none;
-	overflow: hidden;
+
+	white-space: nowrap;
 }
 
 /* NAV ELEMENTS */
