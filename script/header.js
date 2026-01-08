@@ -54,15 +54,18 @@ let navColl = document.getElementsByClassName('nav-coll-container');
 let navHead = document.getElementsByClassName('nav-head');
 let navLinks = document.getElementsByClassName('nav-hidden-links')
 
-findHeadNavButton = function() { // find and initialize collapsible nav
+function findHeadNavButton() { // find and initialize collapsible nav
 	for (let i = 0; i < navColl.length; i++) {
 		navHead[i].addEventListener('click', function () {
 			let curNavLinks = navLinks[i];
+			console.log('click');
 			navHead[i].classList.toggle("active");
 			if (curNavLinks.style.maxHeight) {
 				curNavLinks.style.maxHeight = null;
+				console.log(curNavLinks);
 			} else {
 				curNavLinks.style.maxHeight = curNavLinks.scrollHeight + "px";
+				console.log(curNavLinks);
 			};
 		});
 	};

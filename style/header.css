@@ -1,6 +1,7 @@
 body {
 	font-family: Helvetica, sans-serif;
 	margin: 0;
+	padding: 0;
 	padding-top: 60px;
 }
 
@@ -83,14 +84,15 @@ input {
 
 /* NAV */
 #navBar {
-	display: flex;
-	position: fixed;
+	display: inline-flex;
+	position: absolute;
+
 	z-index: 1000;
-	width: 100%;
+	width: 80vw;
 	height: fit-content;
 
 	overflow-x: scroll;
-	overflow-y: hidden;
+	overflow-y: clip;
 
 	-webkit-overflow-scrolling: touch;
 
@@ -98,6 +100,9 @@ input {
 	scrollbar-width: none; 
 
 	top: 0;
+	left: 50%;
+	transform: translate(-50%, 0);
+
 	margin: 0;
 
 	border-bottom-left-radius: 25px;
@@ -109,7 +114,7 @@ input {
 	transition: 0.3s;
 
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 
 	list-style-type: none;
 
@@ -192,7 +197,7 @@ input {
 }
 
 .nav-head::before {
-	position: absolute;
+	position: flex;
 	z-index: -1;
 	height: 100%;
 	width: 100%;
@@ -229,13 +234,14 @@ input {
 	content: " \25B2";
 }
 
+/* collapsible content */
 .nav-hidden-links {
 	position: fixed;
+	z-index: 9999;
 	max-height: 0;
 	height: fit-content;
 	width: inherit;
 
-	overflow: hidden;
 	transition: max-height 0.2s ease-out;
 
 	background-image: linear-gradient(to bottom, #8EBCBE, #50808E);
@@ -349,7 +355,7 @@ search-icon {
 
 	background-image: linear-gradient(to bottom, #50808E, #8EBCBE);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-	border-radius: 25px;
+	border-radius: 50%;
 
 	font-size: 24px;
 	color: #fff;
@@ -358,6 +364,7 @@ search-icon {
 	overflow: hidden;
 
 	text-align: center;
+	align-content: center;
 }
 
 .button-grid li a:hover {

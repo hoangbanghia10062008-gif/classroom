@@ -19,7 +19,7 @@ const songData = [ // Array to hold song data
 
 	{
 		title: "Baby Beluga",
-		video: "https://www.youtube.com/embed/mIBY-LQYkVA",
+		video: "https://youtube.com/embed/ZjTnENSYAcM",
 		PDF: "Baby Beluga.pptx.pdf",
 	},
 
@@ -79,7 +79,7 @@ import {CreateSong} from './header-template.js';
 function populateSongEntry() {
 	for (let i = 0; i < songData.length; ++i) {
 		CreateSong(songData[i].video, songData[i].PDF, songData[i].title);
-	}
+	};
 };
 populateSongEntry();
 

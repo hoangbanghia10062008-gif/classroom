@@ -54,11 +54,20 @@ const phonicData = [ // Array to hold book data
 	},
 
 	{
-		letter: "I",
-		mouth: "https://www.youtube.com/embed/IIBiGq2w6iA",
-		worksheet: "/classroom/resources/worksheet/Initial Consonant I-JK.pdf",
-		jollyPhonics: "https://www.youtube.com/embed/d5xnlvH_ICo",
-		vocabSong: "https://www.youtube.com/embed/yZbNMjwgEN8",
+		letter: "J",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant J-JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
+		summary: "",
+	},
+	
+	{
+		letter: "L",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant L-JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
 		summary: "",
 	},
 
@@ -68,6 +77,33 @@ const phonicData = [ // Array to hold book data
 		worksheet: "/classroom/resources/worksheet/Initial Consonant M-JK.pdf",
 		jollyPhonics: "https://www.youtube.com/embed/0O0xmga_mXw",
 		vocabSong: "https://www.youtube.com/embed/McACiO5dwGM",
+		summary: "",
+	},
+	
+	{
+		letter: "N",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant N-JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
+		summary: "",
+	},
+
+	{
+		letter: "P",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant P -JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
+		summary: "",
+	},
+
+	{
+		letter: "R",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant R-JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
 		summary: "",
 	},
 
@@ -88,6 +124,15 @@ const phonicData = [ // Array to hold book data
 		vocabSong: "https://www.youtube.com/embed/4PhbUhrI4KE",
 		summary: "",
 	},
+
+	{
+		letter: "W",
+		mouth: "",
+		worksheet: "/classroom/resources/worksheet/Initial Consonant W-JK.pdf",
+		jollyPhonics: "",
+		vocabSong: "",
+		summary: "",
+	},
 ];
 
 let btnPhonic = document.getElementsByClassName("btn-phonic");
@@ -106,7 +151,7 @@ createPhonicContent = function (phonic) { // Generates template for each overlay
 	const content = `
 		<button type="button" class="btn-exit">Exit</button>
 		<div class="p-text">
-			<h4>About Consonant <i>${phonic.letter}${(phonic.letter).toLowerCase()}</i></h4>
+			<h4>About Consonant <i>/${phonic.letter}${(phonic.letter).toLowerCase()}</i></h4>
 			<p>${phonic.summary}</p>
 			<embed src="${phonic.worksheet}" target="_blank" class="pdf-preview">
 		</div>
@@ -136,7 +181,7 @@ createPhonicContent = function (phonic) { // Generates template for each overlay
 	return content
 };
 
-addOverlay = function () { // create overlay for each inidividual character
+function addOverlay() { // create overlay for each inidividual character
 	for (let i = 0; i < btnPhonic.length; i++) {
 		btnPhonic[i].addEventListener("click", function () {
 
@@ -165,7 +210,7 @@ addOverlay = function () { // create overlay for each inidividual character
 	};
 };
 
-loadButtons = function () { // Load Buttons for each Phonic
+function loadButtons() { // Load Buttons for each Phonic
 	const grid = document.querySelector(".grid");
 	if (!grid) {return};
 
