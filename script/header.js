@@ -50,55 +50,32 @@ loadComponent = function (url, placeholderId) {
 };
 
 // NAVBAR
-let navColl = document.getElementsByClassName('nav-coll-container');
-let navHead = document.getElementsByClassName('nav-head');
-let navLinks = document.getElementsByClassName('nav-hidden-links')
-
-function findHeadNavButton() { // find and initialize collapsible nav
-	for (let i = 0; i < navColl.length; i++) {
-		navHead[i].addEventListener('click', function () {
-			let curNavLinks = navLinks[i];
-			console.log('click');
-			navHead[i].classList.toggle("active");
-			if (curNavLinks.style.maxHeight) {
-				curNavLinks.style.maxHeight = null;
-				console.log(curNavLinks);
-			} else {
-				curNavLinks.style.maxHeight = curNavLinks.scrollHeight + "px";
-				console.log(curNavLinks);
-			};
-		});
-	};
-}
-
-initializeNavHighlight = function () { // New function for highlighting the current page
-    let currentPath = window.location.pathname; 
-
-    if (currentPath.endsWith('/')) {
-        currentPath = currentPath + 'index.html'; 
-    }
-
-    // Use document.querySelector to find the container
-    const navBar = document.getElementById('navBar');
-
-    if (!navBar) {
-        console.warn("Cannot initialize nav highlight: #navBar not found.");
-        return; // Exit if the element isn't there yet
-    }
-    
-    // Select links after confirming #navBar exists
-    const navLinks = navBar.querySelectorAll('li a'); 
-
-    navLinks.forEach(function(link) {
-        let linkHref = link.getAttribute('href');
-
-        // IMPORTANT: Check for 'active' class (Fix 2)
-        if (linkHref === currentPath) { 
-            link.classList.add('active'); // Use 'active' here'
-		} else if (linkHref) {
-            link.classList.remove('active');
-		};
+function initializeNav() {
+    // Highlight current page
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('#navBar a:not(.nav-head)');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (currentPath === '/' && href === '/classroom/index.html')) {
+            link.classList.add('active');
+        };
     });
+
+    // Collapsible nav
+    const navHead = document.querySelector('.nav-head');
+    const hiddenLinks = document.querySelector('.nav-hidden-links');
+    if (navHead && hiddenLinks) {
+        navHead.addEventListener('click', () => {
+            function isOpen() {return hiddenLinks.style.maxHeight && hiddenLinks.style.maxHeight !== '0px'};
+            if (isOpen()) {
+                hiddenLinks.style.maxHeight = '0px';
+                navHead.textContent = 'Language ▼';
+            } else {
+                hiddenLinks.style.maxHeight = hiddenLinks.scrollHeight + 'px';
+                navHead.textContent = 'Language ▲';
+            }
+        });
+    }
 }
 
 // LOAD PAGE
@@ -109,8 +86,7 @@ loadLayout = async function () { // Load all common layout elements
 	]);
 
 	initializeSearchBar();
-	findHeadNavButton();
-	initializeNavHighlight();
+	initializeNav();
 };
 
 loadPageComponents = async function () { // Function to load page-specific components
