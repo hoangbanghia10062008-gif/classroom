@@ -26,7 +26,7 @@ initializeSearchBar = function () {
 };
 
 // Fetches and injects an HTML component
-loadComponent = function (url, placeholderId) {
+function loadComponent(url, placeholderId) {
 	return fetch(url)
 		.then(response => {
 			if (!response.ok) {
@@ -64,46 +64,37 @@ function initializeNav() {
     // Collapsible nav
     const navHead = document.querySelector('.nav-head');
     const hiddenLinks = document.querySelector('.nav-hidden-links');
-    if (navHead && hiddenLinks) {
-        navHead.addEventListener('click', () => {
-            function isOpen() {return hiddenLinks.style.maxHeight && hiddenLinks.style.maxHeight !== '0px'};
-            if (isOpen()) {
-                hiddenLinks.style.maxHeight = '0px';
-                navHead.textContent = 'Language ▼';
-            } else {
-                hiddenLinks.style.maxHeight = hiddenLinks.scrollHeight + 'px';
-                navHead.textContent = 'Language ▲';
-            }
-        });
-    }
+	navHead.addEventListener('click', () => {
+		function isOpen() {
+			return hiddenLinks.style.maxHeight !== '0px';
+		};
+		
+		if (isOpen()) {
+			hiddenLinks.style.display = 'none';
+			hiddenLinks.style.maxHeight = '0px';
+			console.log(hiddenLinks.style.maxHeight);
+			navHead.textContent = 'Language ▼';
+			console.log(isOpen())
+		} else {
+			hiddenLinks.style.display = 'block';
+			hiddenLinks.style.maxHeight = hiddenLinks.scrollHeight + 'px';
+			console.log(hiddenLinks.style.maxHeight, hiddenLinks.scrollHeight, hiddenLinks);
+			navHead.textContent = 'Language ▲';
+			console.log('close')
+		};
+	});
 }
 
 // LOAD PAGE
 loadLayout = async function () { // Load all common layout elements
 	await Promise.all([
-		loadComponent("/classroom/template/loader.html", "loader-placeholder"),
-		loadComponent("/classroom/template/navbar.html", "navbar-placeholder")
+		loadComponent("/classroom/loader.html", "loader-placeholder"),
+		loadComponent("/classroom/navbar.html", "navbar-placeholder")
 	]);
 
 	initializeSearchBar();
 	initializeNav();
 };
-
-loadPageComponents = async function () { // Function to load page-specific components
-	const headerPlaceholder = document.getElementById("header-placeholder"); // Find the header placeholder
-
-	if (headerPlaceholder) { // Check if the placeholder exists
-		const headerFile = headerPlaceholder.getAttribute("data-header-file"); // Get the specific header file name from the 'data-header-file' attribute
-		if (headerFile) {
-			const headerPath = `/classroom/template/${headerFile}`;
-			await loadComponent(headerPath, "header-placeholder");
-		} else {
-			console.warn("No 'data-header-file' attribute found on 'header-placeholder'.");
-		}
-	}
-
-	// add more page-specific parts here using the same pattern
-}
 
 // --- CORE LOADER LOGIC ---
 
@@ -133,9 +124,8 @@ function hideLoader() { // hide loader using css
 	});
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('load', function() {
 	hideLoader();
 });
 
 loadLayout();
-loadPageComponents();

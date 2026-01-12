@@ -4,11 +4,8 @@ const title = document.createElement('h1');
 const subtitle = document.createElement('h4');
 
 header.classList.add('header')
-
 title.style.fontSize = "60px";
-
 subtitle.style.fontSize = "40px";
-
 header.prepend(title, subtitle);
 
 export function CreateHeader(titleText, subtitleText) {

@@ -1,3 +1,7 @@
+import { CreateHeader } from './header-template.js';
+
+CreateHeader("Phonics", "Learn the sounds of letters with engaging videos and worksheets.");
+
 const phonicData = [ // Array to hold book data
 	{
 		letter: "B",
@@ -138,7 +142,7 @@ const phonicData = [ // Array to hold book data
 let btnPhonic = document.getElementsByClassName("btn-phonic");
 let overlay = document.querySelector(".overlay");
 
-createPhonicButton = function (phonic) { // Generates template for each phonic button
+function createPhonicButton(phonic) { // Generates template for each phonic button
 	let button = `
 		<button type="button" class="btn-phonic">
 			${phonic.letter}${(phonic.letter).toLowerCase()}
@@ -147,7 +151,7 @@ createPhonicButton = function (phonic) { // Generates template for each phonic b
 	return button
 };
 
-createPhonicContent = function (phonic) { // Generates template for each overlay content
+function createPhonicContent(phonic) { // Generates template for each overlay content
 	const content = `
 		<button type="button" class="btn-exit">Exit</button>
 		<div class="p-text">
@@ -190,8 +194,8 @@ function addOverlay() { // create overlay for each inidividual character
 			let btnExit = document.querySelector(".btn-exit");
 			let content = overlay.children;
 
-			for (ele of content) {
-				ele.style.visibility = "visible"; // Expose each children of content
+			for (let j = 0; j < content.length; j++) {
+				content[j].style.visibility = "visible"; // Expose each children of content
 			};
 
 			overlay.style.visibility = "visible";

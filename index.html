@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Home</title>
+		<link rel="stylesheet" href="/classroom/style/index.css" />
+		<link rel="stylesheet" href="/classroom/style/header.css" />
+	</head>
+	<body>
+		<div id="loader-placeholder"></div>
+		<div id="navbar-placeholder"></div>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Home</title>
-	<link rel="stylesheet" href="/classroom/style/index.css">
-	<link rel="stylesheet" href="/classroom/style/header.css">
-</head>
+		<div class="button-grid">
+			<li><a id="home" href="/classroom/index.html">Home</a></li>
+			<li><a id="news" href="/classroom/news.html">News</a></li>
+			<li><a id="phonics" href="/classroom/phonics.html">Phonics</a></li>
+			<li><a id="read" href="/classroom/read.html">Read Alouds</a></li>
+			<li><a id="math" href="/classroom/math.html">Math</a></li>
+			<li><a id="music" href="/classroom/music.html">Music</a></li>
+			<li><a id="arts" href="/classroom/arts.html">Arts</a></li>
+			<li><a id="action" href="/classroom/action.html">Action Words</a></li>
+		</div>
 
-<body>
-	<!--Template-->
-	<div id="loader-placeholder"><!--Loader--></div>
-
-	<div id="navbar-placeholder"><!--Navigation Bar--></div>
-
-	<div id="header-placeholder" data-header-file="header-index.html"><!--Header--></div>
-	<!--End Template-->
-
-	<div class="button-grid">
-		<li><a id="home" href="/classroom/index.html">Home</a></li>
-		<li><a id="news" href="/classroom/news.html">News</a></li>
-		<li><a id="phonics" href="/classroom/phonics.html">Phonics</a></li>
-		<li><a id="read" href="/classroom/read.html">Read Alouds</a></li>
-		<li><a id="math" href="/classroom/math.html">Math</a></li>
-		<li><a id="music" href="/classroom/music.html">Music</a></li>
-		<li><a id="arts" href="/classroom/arts.html">Arts</a></li>
-		<li><a id="action" href="/classroom/action.html">Action Words</a></li>
-	</div>
-
-	<script src="/classroom/script/header.js"></script>
-
-</body>
-
+		<script src="/classroom/script/header.js"></script>
+		<script type="module" src="/classroom/script/index.js"></script>
+	</body>
 </html>

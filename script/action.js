@@ -1,3 +1,7 @@
+import { CreateHeader } from './header-template.js';
+
+CreateHeader("Action Words", "Explore common action words with fun videos and images.");
+
 const actionData = [ // Array to hold song data
 	{
 		word: "build",
